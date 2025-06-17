@@ -1,3 +1,9 @@
+<?php 
+    include("../conexion.php");
+    $sql = "SELECT * FROM estudiantes";
+    $estudiantes = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -112,13 +118,25 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Nombre</th>
-                                            <th>No. Telefono</th>
-                                            <th>Acciones</th>
+                                            <th>Carrera</th>
+                                            <th>Grado</th>
+                                            <th style="width: 28%">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php while($row = mysqli_fetch_array($estudiantes)): ?>
+                                        <tr>
+                                            <th><?php echo $row['nombre']; ?></th>
+                                            <th><?php echo $row['carrera']; ?></th>
+                                            <th><?php echo $row['grado']; ?>to</th>
+                                            <th>
+                                                <a href="view.php?id=<?php echo $row['id_estudiante']; ?>"><button type="button" title="Ver datos completos" class="btn btn-outline-success"><i class="fa-solid fa-eye"></i></button></a>
+                                                <a href="delete.php? id=<?php echo $row['id_estudiante']; ?>"><button type="button" title="Borrar registro" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></button></a>
+                                                <a href="edit.php? id=<?php echo $row['id_estudiante']; ?>"><button type="button" title="editar registro" class="btn btn-outline-warning"><i class="fa-solid fa-file-pen"></i></button></a>
+                                            </th>
+                                        </tr>
+                                        <?php endwhile?>
                                     </tbody>
                                 </table>
                             </div>

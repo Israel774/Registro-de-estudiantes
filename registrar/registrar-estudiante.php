@@ -1,3 +1,12 @@
+<?php 
+    include("../conexion.php");
+    $sql = "SELECT nombre_carrera FROM carreras GROUP BY nombre_carrera";
+    $sql2 = "SELECT grado FROM carreras group by grado";
+    $carreras = mysqli_query($conn, $sql);
+    $grados = mysqli_query($conn, $sql2);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,12 +98,12 @@
                                 <!-- Nested Row within Card Body -->
                                 <div class="row">
                                     <div class="col-lg-5 d-none d-lg-block bg-register-image">
-                                        <img src="img/logoAgenda.png" alt="" class="logoagenda">
+                                        <img src="https://lh3.googleusercontent.com/proxy/HM2DtXVAJNxoKSKgEtuXFQcxJZWmCaatvsT2_H7dL1ao7Q5VpaS6Ycs-9_lDVUz74daDrsW6xOauxTymFeor1zKo--6CSNm4fWXJBZjuqBJTE5H7mFp1hleWpc3c2rx0mHJ3" alt="imagen" class="logoagenda" style="width: 100%; height: 75%; margin-left:10%">
                                     </div>
                                     <div class="col-lg-7">
                                         <div class="p-5">
                                             <div class="text-center">
-                                                <h1 class="h4 text-gray-900 mb-4">Agregar contacto!</h1>
+                                                <h1 class="h4 text-gray-900 mb-4">REGISTRAR ESTUDIANTE!</h1>
                                             </div>
                                             <form class="user" method="post" action="create.php" id="registro">
                                                 <div class="form-group row">
@@ -107,10 +116,75 @@
                                                 </div>
                                                 <div class="form-group row">
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                                        <input type="text" class="form-control form-control-user" name="telefono" placeholder="Telefono" id="telefono" required>
+                                                        <label for="" style="color: transparent; font-size: 10px;">Fecha de Nacimiento</label>
+                                                        <select class="form-control" name="genero" id="genero" required 
+                                                        style="
+                                                        border-radius: 25px;
+                                                        height: 48.5px;
+                                                        font-size: 13px;
+                                                        ">
+                                                        <option value="" disabled selected hidden>Genero</option>
+                                                        <option value="Masculino" select>Masculino</option>
+                                                        <option value="Femenino" select>Femenino</option>
+                                                        <option value="Otro" select>Otro</option>
+                                                        </select>
                                                     </div>
                                                     <div class="col-sm-6">
-                                                        <input type="text" class="form-control form-control-user" name="fechaNacimiento" placeholder="Fecha Nacimiento" id="fecha">
+                                                        <label for="" style="font-size: 10px; color:black;">Fecha de Nacimiento</label>
+                                                        <input type="date" class="form-control form-control-user" name="fechaNacimiento" placeholder="Fecha Nacimiento" id="fecha">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <input type="tel" class="form-control 
+                                                form-control-user" name="telefono" 
+                                                placeholder="Telefono del estudiante" id="telefono" required>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" name="jornada" 
+                                                        id="carrera" required 
+                                                        style="
+                                                        border-radius: 25px;
+                                                        height: 48.5px;
+                                                        font-size: 13px;
+                                                        ">
+                                                        <option value="" disabled selected hidden>Jornada</option>
+                                                        <option value="Matutina" select>Matutina</option>
+                                                        <option value="Vespertina" select>Vespertina</option>
+                                                        <option value="Doble" select>Doble</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                                        <select class="form-control" name="carrera" 
+                                                        id="carrera" required 
+                                                        style="
+                                                        border-radius: 25px;
+                                                        height: 48.5px;
+                                                        font-size: 13px;
+                                                        ">
+                                                        <option value="" disabled selected hidden>Carrera</
+                                                        option>
+                                                        <?php while($row = mysqli_fetch_array($carreras)): ?>
+                                                            <option value="<?= $row['nombre_carrera']?>"><?php echo $row['nombre_carrera']; ?></option>
+                                                        <?php endwhile?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <select class="form-control" name="grado" 
+                                                        required 
+                                                        style="
+                                                        border-radius: 25px;
+                                                        height: 48.5px;
+                                                        font-size: 13px;
+                                                        ">
+                                                        <option value="" disabled selected hidden>Grado</
+                                                        option>
+                                                        <?php while($row = mysqli_fetch_array($grados)): ?>
+                                                            <option value="<?= $row['grado']?>"><?php echo $row['grado']; ?></option>
+                                                        <?php endwhile?>
+                                                        </select>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -120,10 +194,8 @@
                                                     <input type="text" class="form-control form-control-user" placeholder="Direccion" name="direccion" id="direccion">
                                                 </div>
                                                 <hr>
-                                                <textarea class="form-control"  name="descripcion" rows=3 placeholder="Descripcion sobre el contacto" id="descripcion"></textarea>
-                                                <hr>
                                                 <button type="submit" class="btn btn-facebook btn-user btn-block">
-                                                    Agregar contacto a la Agenda
+                                                    REGISTRAR
                                                 </button>
                                             </form>
                                             <hr>
