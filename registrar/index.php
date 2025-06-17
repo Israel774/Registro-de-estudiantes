@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link"  href="registrar-estudiantes.php">
+                <a class="nav-link"  href="registrar-estudiante.php">
                 <i class="fa-solid fa-cash-register"></i>
                 <span>Registrar nuevo Estudiante</span>
                 </a>
