@@ -1,3 +1,12 @@
+
+<?php
+session_start();
+if(!isset($_SESSION['codlog'])){
+    header("Location: ../login/login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,10 +52,9 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link"  href="registrar-estudiante.php">
+                <a class="nav-link" href="registrar-estudiante.php">
                 <i class="fa-solid fa-cash-register"></i>
-                <span>Registrar nuevo Estudiante</span>
-                </a>
+                    <span>Registrar nuevo Estudiante</span></a>
             </li>
 
             <!-- Divider -->

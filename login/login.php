@@ -15,20 +15,16 @@
         <div class="neon-corner bottom-right"></div>
     </div>
     <h2>INICIA SESIÓN</h2>
-    <form>
+    <form action="verificar.php" method="post">
         <div class="input-box">
-            <input type="text" required>
+            <input type="text" name="usuario" required>
             <label>USUARIO</label>
         </div>
         <div class="input-box">
-            <input type="password" required>
+            <input type="password" name="pass" required>
             <label>CONTRASEÑA</label>
         </div>
         <button type="submit" class="neon-button">INICIAR</button>
-        <div class="login-links">
-            <a href="#">¿OLVIDASTE TU CONTRASEÑA?</a>
-            <a href="#">INICIAR</a>
-        </div>
     </form>
 </div>
 </body>
